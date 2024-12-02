@@ -142,7 +142,7 @@ const TableComponent = () => {
             <WarningIconWrapper>
               <FontAwesomeIcon icon={faExclamationTriangle} />
             </WarningIconWrapper>
-            <p>¿Estás seguro de eliminar este contacto?</p>
+            <p style={{ color:'white' }}>¿Estás seguro de eliminar este contacto?</p>
             <ModalButtonWrapper>
               <ModalButton confirm onClick={handleDelete}>
                 <FontAwesomeIcon icon={faCheck} /> Sí, eliminar
