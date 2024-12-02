@@ -43,8 +43,7 @@ export const TableContainer = styled.div`
   padding: 20px;
   flex-direction: column;
   width: 100%;
-  background-color: #1e1e1e;
-  color: #fff;
+  background-color: #2e2e2e;
 `;
 
 export const NotificationWrapper = styled.div`
