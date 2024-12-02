@@ -4,7 +4,7 @@
     "description": "Bienvenidos al sitio administrativo de AquaClean.",
     "start_url": "/",
     "display": "standalone",
-    "background_color": "#ffffff",
+    "background_color": "#1e1e1e",
     "theme_color": "#000000",
     "icons": [
       {
