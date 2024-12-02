@@ -8,8 +8,7 @@ const urlsToCache = [
 ];
 
 self.addEventListener('install', (event) => {
-  // En la instalación, no agregamos recursos a la caché
-  // Simplemente dejamos que pase sin añadir nada a la caché
+  // No añadimos recursos a la caché durante la instalación
 });
 
 self.addEventListener('activate', (event) => {
@@ -20,7 +19,7 @@ self.addEventListener('activate', (event) => {
       return Promise.all(
         cacheNames.map((cacheName) => {
           if (!cacheWhitelist.includes(cacheName)) {
-            return caches.delete(cacheName);  // Borrar cualquier caché existente
+            return caches.delete(cacheName);  // Limpiamos cualquier caché anterior
           }
         })
       );
@@ -31,15 +30,34 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   const requestUrl = new URL(event.request.url);
 
-  // Siempre realizar la solicitud desde la red, sin cachear nada
-  event.respondWith(
-    fetch(event.request).then((response) => {
-      // Devolver la respuesta de la red, sin almacenarla en la caché
-      return response;
-    }).catch((error) => {
-      console.error('Error al realizar la solicitud fetch:', error);
-      // Opcional: Si la solicitud falla, se puede gestionar el error de alguna manera (por ejemplo, mostrar una página offline)
-      return new Response('Error al cargar el recurso.', { status: 404 });
-    })
-  );
+  // Excluir GET, PUT y DELETE de la caché, hacer siempre la solicitud a la red
+  if (event.request.method === 'GET' || event.request.method === 'PUT' || event.request.method === 'DELETE') {
+    event.respondWith(
+      fetch(event.request).catch((error) => {
+        console.error('Error al realizar la solicitud fetch:', error);
+        return new Response('Error al cargar el recurso.', { status: 404 });
+      })
+    );
+  } 
+  // Cachear las solicitudes POST
+  else if (event.request.method === 'POST') {
+    event.respondWith(
+      fetch(event.request).then((response) => {
+        if (response && response.ok && !response.redirected) {
+          const clonedResponse = response.clone();
+          caches.open(CACHE_NAME).then((cache) => {
+            cache.put(event.request, clonedResponse);  // Guardamos en la caché
+          });
+        }
+        return response;
+      }).catch((error) => {
+        console.error('Error en la solicitud POST:', error);
+        return new Response('Error al procesar la solicitud POST.', { status: 500 });
+      })
+    );
+  } 
+  // Si es cualquier otro método (por ejemplo, OPTIONS, PATCH, etc.), solo se realiza la solicitud sin cachear
+  else {
+    event.respondWith(fetch(event.request));
+  }
 });
