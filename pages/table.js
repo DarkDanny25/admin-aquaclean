@@ -59,7 +59,7 @@ const TableComponent = () => {
         Push.create('¡Nuevos contactos registrados!', {
           body: `Se han registrado ${newRegisteredCount} nuevos contactos.`,
           icon: '/icon-192x192.png',
-          timeout: 4000,
+          timeout: 10000,
           onClick: function () {
             window.focus();
             this.close();
