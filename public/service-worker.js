@@ -8,13 +8,8 @@ const urlsToCache = [
 ];
 
 self.addEventListener('install', (event) => {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(urlsToCache).catch((error) => {
-        console.error('Error al agregar recursos a la caché durante la instalación', error);
-      });
-    })
-  );
+  // En la instalación, no agregamos recursos a la caché
+  // Simplemente dejamos que pase sin añadir nada a la caché
 });
 
 self.addEventListener('activate', (event) => {
@@ -25,7 +20,7 @@ self.addEventListener('activate', (event) => {
       return Promise.all(
         cacheNames.map((cacheName) => {
           if (!cacheWhitelist.includes(cacheName)) {
-            return caches.delete(cacheName);
+            return caches.delete(cacheName);  // Borrar cualquier caché existente
           }
         })
       );
@@ -36,46 +31,15 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   const requestUrl = new URL(event.request.url);
 
-  if (
-    event.request.method === 'PUT' && (
-      requestUrl.pathname === '/profile'
-    ) ||
-    event.request.method === 'DELETE' && (
-      requestUrl.pathname === '/profile'
-    )
-  ) {
-    event.respondWith(fetch(event.request));
-  } else if (
-    event.request.method === 'DELETE' && (
-      requestUrl.pathname.startsWith('/table')
-    )
-  ) {
-    event.respondWith(fetch(event.request));
-  } else if (
-    event.request.method === 'PUT' && (
-      requestUrl.pathname.startsWith('/edit/')
-    )
-  ) {
-    event.respondWith(fetch(event.request));
-  } else {
-    event.respondWith(
-      caches.match(event.request).then((cachedResponse) => {
-        if (cachedResponse) {
-          return cachedResponse;
-        }
-
-        return fetch(event.request).then((response) => {
-          if (response && response.ok && !response.redirected) {
-            const clonedResponse = response.clone();
-            caches.open(CACHE_NAME).then((cache) => {
-              cache.put(event.request, clonedResponse);
-            });
-          }
-          return response;
-        }).catch((error) => {
-          console.error('Error en la solicitud fetch: ', error);
-        });
-      })
-    );
-  }
+  // Siempre realizar la solicitud desde la red, sin cachear nada
+  event.respondWith(
+    fetch(event.request).then((response) => {
+      // Devolver la respuesta de la red, sin almacenarla en la caché
+      return response;
+    }).catch((error) => {
+      console.error('Error al realizar la solicitud fetch:', error);
+      // Opcional: Si la solicitud falla, se puede gestionar el error de alguna manera (por ejemplo, mostrar una página offline)
+      return new Response('Error al cargar el recurso.', { status: 404 });
+    })
+  );
 });
