@@ -1,9 +1,6 @@
 const CACHE_NAME = 'admin-manager-cache-v1';
 const urlsToCache = [
   '/',
-  '/login',
-  '/register',
-  '/pageDenied',
   '/img/logo.png',
   '/manifest.json',
   '/icons/icon-192x192.png',
