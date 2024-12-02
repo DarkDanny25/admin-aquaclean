@@ -41,7 +41,22 @@ self.addEventListener('fetch', (event) => {
 
   if (
     event.request.method === 'PUT' && (
-      requestUrl.pathname.startsWith('/edit/') || requestUrl.pathname === '/profile'
+      requestUrl.pathname === '/profile'
+    ) ||
+    event.request.method === 'DELETE' && (
+      requestUrl.pathname === '/profile'
+    )
+  ) {
+    event.respondWith(fetch(event.request));
+  } else if (
+    event.request.method === 'DELETE' && (
+      requestUrl.pathname.startsWith('/table')
+    )
+  ) {
+    event.respondWith(fetch(event.request));
+  } else if (
+    event.request.method === 'PUT' && (
+      requestUrl.pathname.startsWith('/edit/')
     )
   ) {
     event.respondWith(fetch(event.request));
