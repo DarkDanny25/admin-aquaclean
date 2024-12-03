@@ -88,14 +88,6 @@ export const Table = styled.table`
   background-color: #333;
   border-radius: 8px;
   overflow: hidden;
-
-  @media (max-width: 768px) {
-    width: 90%;
-  }
-
-  @media (max-width: 425px) {
-    width: 100%;
-  }
 `;
 
 export const TableHeader = styled.th`
