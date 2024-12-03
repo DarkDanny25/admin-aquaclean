@@ -6,7 +6,7 @@ const FooterComponent = () => {
   return (
     <Footer>
       <FooterText>
-        © 2024 AquaClean - Todos los derechos reservados
+        © 2024 AquaClean. Todos los derechos reservados.
       </FooterText>
       <SocialIcons>
         <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
