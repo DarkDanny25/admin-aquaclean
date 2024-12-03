@@ -92,6 +92,8 @@ export const DropdownMenu = styled.div`
   padding: 5px 0;
   width: 200px;
   min-width: 150px; /* Un tamaño mínimo para evitar que se vea pequeño */
+  max-height: 300px; /* Limitar altura si es necesario */
+  overflow-y: auto; /* Permitir desplazamiento si el menú es muy largo */
 
   @media (max-width: 768px) {
     width: 180px; /* Ajuste para tabletas */
