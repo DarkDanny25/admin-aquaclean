@@ -73,16 +73,6 @@ export const DropdownMenu = styled.div`
   z-index: 1000;
   display: ${({ isOpen }) => (isOpen ? 'block' : 'none')};
   padding: 5px 0;
-  width: 200px; /* Mantener un ancho fijo */
-
-  /* Elimina el media query que cambia el ancho */
-  /* El menú siempre tendrá un ancho fijo (200px) */
-
-  @media (max-width: 768px) {
-    width: 180px; /* Puedes ajustar el ancho para pantallas medianas como tabletas */
-  }
-
-  /* No es necesario agregar más reglas aquí */
 `;
 
 export const DropdownItem = styled.button`
