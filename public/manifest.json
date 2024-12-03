@@ -2,7 +2,7 @@
     "name": "Admin AquaClean Enterprise",
     "short_name": "Admin AquaClean",
     "description": "Bienvenidos al sitio administrativo de AquaClean.",
-    "start_url": "/",
+    "start_url": "/login",
     "display": "standalone",
     "background_color": "#1e1e1e",
     "theme_color": "#000000",

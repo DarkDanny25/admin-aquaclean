@@ -1,9 +1,13 @@
 const nextConfig = {
   reactStrictMode: true,
-  async exportPathMap() {
-    return {
-      '/': { page: '/login' },
-    };
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/home',
+        permanent: true,
+      },
+    ];
   },
 };
 
