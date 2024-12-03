@@ -44,6 +44,7 @@ export const TableContainer = styled.div`
   flex-direction: column;
   width: 100%;
   background-color: #2e2e2e;
+  overflow: hidden; /* Evitar el desbordamiento */
 `;
 
 export const NotificationWrapper = styled.div`
@@ -82,19 +83,21 @@ export const NotificationIcon = styled.div`
 `;
 
 export const Table = styled.table`
-  width: 70%;
+  width: 100%; /* Asegura que la tabla ocupe el 100% del ancho disponible */
   border-collapse: collapse;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   background-color: #333;
   border-radius: 8px;
   overflow: hidden;
+  table-layout: auto; /* Asegura que las celdas se ajusten automáticamente según el contenido */
 
   @media (max-width: 768px) {
-    width: 90%;
+    width: 100%; /* En pantallas más pequeñas, la tabla sigue ajustándose al 100% */
   }
 
   @media (max-width: 425px) {
     width: 100%;
+    font-size: 12px; /* Reducir el tamaño de la fuente en pantallas pequeñas */
   }
 `;
 
@@ -105,6 +108,8 @@ export const TableHeader = styled.th`
   text-align: left;
   font-size: 16px;
   font-weight: bold;
+  word-wrap: break-word; /* Para evitar que el contenido largo se salga de la celda */
+  white-space: normal; /* Asegura que el texto se ajuste en varias líneas si es necesario */
 
   @media (max-width: 768px) {
     padding: 10px;
@@ -122,6 +127,8 @@ export const TableCell = styled.td`
   font-size: 14px;
   color: white;
   text-align: left;
+  word-wrap: break-word; /* Para evitar que el contenido largo se salga de la celda */
+  white-space: normal; /* Asegura que el texto se ajuste en varias líneas si es necesario */
 
   @media (max-width: 768px) {
     font-size: 12px;
