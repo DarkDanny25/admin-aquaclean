@@ -90,7 +90,7 @@ export const NotificationIcon = styled.div`
 `;
 
 export const Table = styled.table`
-  width: 100%;  /* Asegura que la tabla ocupe todo el ancho disponible */
+  width: 70%;  /* Asegura que la tabla ocupe todo el ancho disponible */
   border-collapse: collapse;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   background-color: #333;
