@@ -40,10 +40,10 @@ export const TableContainer = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 100%; // Asegura que ocupe todo el ancho disponible
+  width: 100%; // Asegúrate de que el contenedor ocupe todo el ancho
   padding: 20px;
   background-color: #2e2e2e;
-  overflow-x: auto; // Permite scroll horizontal en caso de desbordamiento
+  overflow-x: hidden; // Evita el scroll horizontal
 `;
 
 export const NotificationWrapper = styled.div`
@@ -82,20 +82,23 @@ export const NotificationIcon = styled.div`
 `;
 
 export const Table = styled.table`
-  width: 100%; // Cambiar a 100% para ocupar siempre todo el espacio disponible
-  max-width: 1200px; // Opcional: limita el ancho máximo para pantallas grandes
+  width: 100%; // La tabla ocupa siempre el 100% del contenedor
   border-collapse: collapse;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   background-color: #333;
   border-radius: 8px;
-  overflow: hidden;
+
+  td, th {
+    word-wrap: break-word; // Permite que el texto se divida en varias líneas
+    white-space: normal;   // Desactiva el comportamiento de una sola línea
+  }
 
   @media (max-width: 768px) {
-    width: 100%; // Se mantiene al 100% para tablets
+    font-size: 14px; // Reduce el tamaño de la fuente para tablets
   }
 
   @media (max-width: 425px) {
-    width: 100%; // Se mantiene al 100% para móviles
+    font-size: 12px; // Reduce más el tamaño de la fuente para móviles
   }
 `;
 
@@ -109,12 +112,12 @@ export const TableHeader = styled.th`
 
   @media (max-width: 768px) {
     padding: 10px;
-    font-size: 14px; // Ajusta tamaño del texto para tablets
+    font-size: 14px; // Fuente más pequeña para tablets
   }
 
   @media (max-width: 425px) {
-    padding: 8px; // Reduce padding en móviles
-    font-size: 12px; // Reduce tamaño del texto en móviles
+    padding: 8px;
+    font-size: 12px; // Fuente mínima para móviles
   }
 `;
 
@@ -123,16 +126,18 @@ export const TableCell = styled.td`
   font-size: 14px;
   color: white;
   text-align: left;
-  word-wrap: break-word; // Evita desbordamientos largos de texto
+  word-wrap: break-word; // Divide palabras largas
+  white-space: normal; // Ajusta el texto para que no se corte
+  overflow: hidden;
 
   @media (max-width: 768px) {
     padding: 10px;
-    font-size: 12px; // Ajusta tamaño del texto para tablets
+    font-size: 12px; // Reduce el tamaño en tablets
   }
 
   @media (max-width: 425px) {
-    padding: 8px; // Reduce padding en móviles
-    font-size: 11px; // Reduce tamaño del texto en móviles
+    padding: 8px;
+    font-size: 11px; // Ajusta aún más en móviles
   }
 `;
 
