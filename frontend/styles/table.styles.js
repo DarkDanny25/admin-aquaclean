@@ -341,7 +341,6 @@ export const PaginationWrapper = styled.div`
   margin-top: 20px;
 
   @media (max-width: 425px) {
-    flex-direction: column;
     margin-top: 10px;
   }
 `;
