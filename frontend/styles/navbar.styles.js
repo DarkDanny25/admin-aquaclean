@@ -73,9 +73,15 @@ export const DropdownMenu = styled.div`
   z-index: 1000;
   display: ${({ isOpen }) => (isOpen ? 'block' : 'none')};
   padding: 5px 0;
+  width: 200px; /* Se asegura un ancho fijo en pantallas pequeñas */
+  min-width: 150px; /* Ancho mínimo para evitar que se colapse demasiado */
+  box-sizing: border-box;
 
   @media (max-width: 425px) {
-    width: 100%;
+    width: 100%; /* El menú se adapta al tamaño de la pantalla */
+    position: static; /* Cambia a estático para que se acomode en el flujo normal del documento */
+    left: 0; /* Asegura que el menú se alinee con el borde izquierdo */
+    top: 10px; /* Agrega algo de margen superior si es necesario */
   }
 `;
 
