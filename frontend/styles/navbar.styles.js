@@ -65,7 +65,7 @@ export const UserButton = styled.button`
 
 export const DropdownMenu = styled.div`
   position: absolute;
-  top: 100%;
+  top: 100%; /* Se asegura que el menú esté debajo del botón */
   right: 0;
   background-color: #2e2e2e;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -73,15 +73,17 @@ export const DropdownMenu = styled.div`
   z-index: 1000;
   display: ${({ isOpen }) => (isOpen ? 'block' : 'none')};
   padding: 5px 0;
-  width: 200px; /* Se asegura un ancho fijo en pantallas pequeñas */
-  min-width: 150px; /* Ancho mínimo para evitar que se colapse demasiado */
+  width: 200px;
+  min-width: 150px; /* Ajuste de un ancho mínimo */
   box-sizing: border-box;
 
   @media (max-width: 425px) {
-    width: 100%; /* El menú se adapta al tamaño de la pantalla */
-    position: static; /* Cambia a estático para que se acomode en el flujo normal del documento */
-    left: 0; /* Asegura que el menú se alinee con el borde izquierdo */
-    top: 10px; /* Agrega algo de margen superior si es necesario */
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 10px;
+    max-height: 300px; /* Limita la altura para evitar que el menú se desborde */
+    overflow-y: auto; /* Hace que el menú sea desplazable si es muy largo */
   }
 `;
 
