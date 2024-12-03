@@ -70,7 +70,6 @@ export const NotificationWrapper = styled.div`
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   animation: ${(props) => (props.isExiting ? fadeOut : fadeIn)} 0.5s ease forwards;
   z-index: 1000;
-
   max-width: 90%;
   text-align: center;
 
@@ -90,24 +89,22 @@ export const NotificationIcon = styled.div`
 `;
 
 export const Table = styled.table`
-  width: 70%;  /* Asegura que la tabla ocupe todo el ancho disponible */
+  width: 70%;
   border-collapse: collapse;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   background-color: #333;
   border-radius: 8px;
   overflow: hidden;
-
-  /* Asegura que las celdas no se desborden */
   table-layout: fixed;
 
   @media (max-width: 768px) {
     width: 100%;
-    font-size: 12px;  /* Ajuste de fuente en pantallas medianas */
+    font-size: 12px;
   }
 
   @media (max-width: 425px) {
     width: 100%;
-    font-size: 10px;  /* Ajuste de fuente en pantallas pequeñas */
+    font-size: 10px;
   }
 `;
 
@@ -135,7 +132,7 @@ export const TableCell = styled.td`
   font-size: 14px;
   color: white;
   text-align: left;
-  overflow: hidden; /* Previene el desbordamiento del texto */
+  overflow: hidden;
 
   @media (max-width: 768px) {
     font-size: 12px;
