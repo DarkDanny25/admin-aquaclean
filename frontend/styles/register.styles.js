@@ -43,7 +43,7 @@ export const InputWrapper = styled.div`
 export const InputField = styled.input`
   width: 100%;
   padding: 12px 40px;
-  padding-left: 30px;
+  padding-left: 40px;
   border: 2px solid #666;
   border-radius: 8px;
   background-color: #333;
