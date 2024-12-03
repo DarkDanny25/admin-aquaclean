@@ -39,11 +39,11 @@ export const TableContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 35vh;
-  padding: 20px;
   flex-direction: column;
-  width: 100%;
+  width: 100%; // Asegura que ocupe todo el ancho disponible
+  padding: 20px;
   background-color: #2e2e2e;
+  overflow-x: auto; // Permite scroll horizontal en caso de desbordamiento
 `;
 
 export const NotificationWrapper = styled.div`
@@ -82,12 +82,21 @@ export const NotificationIcon = styled.div`
 `;
 
 export const Table = styled.table`
-  width: 70%;
+  width: 100%; // Cambiar a 100% para ocupar siempre todo el espacio disponible
+  max-width: 1200px; // Opcional: limita el ancho máximo para pantallas grandes
   border-collapse: collapse;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   background-color: #333;
   border-radius: 8px;
   overflow: hidden;
+
+  @media (max-width: 768px) {
+    width: 100%; // Se mantiene al 100% para tablets
+  }
+
+  @media (max-width: 425px) {
+    width: 100%; // Se mantiene al 100% para móviles
+  }
 `;
 
 export const TableHeader = styled.th`
@@ -100,12 +109,12 @@ export const TableHeader = styled.th`
 
   @media (max-width: 768px) {
     padding: 10px;
-    font-size: 14px;
+    font-size: 14px; // Ajusta tamaño del texto para tablets
   }
 
   @media (max-width: 425px) {
-    font-size: 12px;
-    padding: 8px;
+    padding: 8px; // Reduce padding en móviles
+    font-size: 12px; // Reduce tamaño del texto en móviles
   }
 `;
 
@@ -114,15 +123,16 @@ export const TableCell = styled.td`
   font-size: 14px;
   color: white;
   text-align: left;
+  word-wrap: break-word; // Evita desbordamientos largos de texto
 
   @media (max-width: 768px) {
-    font-size: 12px;
     padding: 10px;
+    font-size: 12px; // Ajusta tamaño del texto para tablets
   }
 
   @media (max-width: 425px) {
-    font-size: 11px;
-    padding: 8px;
+    padding: 8px; // Reduce padding en móviles
+    font-size: 11px; // Reduce tamaño del texto en móviles
   }
 `;
 
