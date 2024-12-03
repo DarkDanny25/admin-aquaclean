@@ -43,6 +43,7 @@ export const InputWrapper = styled.div`
 export const InputField = styled.input`
   width: 100%;
   padding: 12px 40px;
+  padding-left: 45px;
   border: 2px solid #666;
   border-radius: 8px;
   background-color: #333;
@@ -57,7 +58,8 @@ export const InputField = styled.input`
   }
 
   @media (max-width: 425px) {
-    padding: 12px 20px;
+    padding: 12px 30px;
+    padding-left: 45px;
     font-size: 0.9rem;
   }
 `;
@@ -69,6 +71,10 @@ export const IconWrapper = styled.div`
   transform: translateY(-50%);
   color: #bdc3c7;
   font-size: 1.2rem;
+
+  @media (max-width: 425px) {
+    font-size: 1rem;
+  }
 `;
 
 export const Button = styled.button`
