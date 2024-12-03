@@ -44,6 +44,14 @@ export const TableContainer = styled.div`
   flex-direction: column;
   width: 100%;
   background-color: #2e2e2e;
+
+  @media (max-width: 768px) {
+    padding: 15px;
+  }
+
+  @media (max-width: 425px) {
+    padding: 10px;
+  }
 `;
 
 export const NotificationWrapper = styled.div`
@@ -82,47 +90,61 @@ export const NotificationIcon = styled.div`
 `;
 
 export const Table = styled.table`
-  width: 70%;
+  width: 100%;  /* Asegura que la tabla ocupe todo el ancho disponible */
   border-collapse: collapse;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   background-color: #333;
   border-radius: 8px;
   overflow: hidden;
+
+  /* Asegura que las celdas no se desborden */
+  table-layout: fixed;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    font-size: 12px;  /* Ajuste de fuente en pantallas medianas */
+  }
+
+  @media (max-width: 425px) {
+    width: 100%;
+    font-size: 10px;  /* Ajuste de fuente en pantallas pequeñas */
+  }
 `;
 
 export const TableHeader = styled.th`
   background-color: #444;
   color: white;
-  padding: 14px;
+  padding: 10px;
   text-align: left;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: bold;
 
   @media (max-width: 768px) {
-    padding: 10px;
-    font-size: 14px;
+    padding: 8px;
+    font-size: 12px;
   }
 
   @media (max-width: 425px) {
-    font-size: 12px;
-    padding: 8px;
+    padding: 6px;
+    font-size: 10px;
   }
 `;
 
 export const TableCell = styled.td`
-  padding: 12px;
+  padding: 10px;
   font-size: 14px;
   color: white;
   text-align: left;
+  overflow: hidden; /* Previene el desbordamiento del texto */
 
   @media (max-width: 768px) {
     font-size: 12px;
-    padding: 10px;
+    padding: 8px;
   }
 
   @media (max-width: 425px) {
-    font-size: 11px;
-    padding: 8px;
+    font-size: 10px;
+    padding: 6px;
   }
 `;
 
@@ -320,6 +342,11 @@ export const PaginationWrapper = styled.div`
   justify-content: center;
   align-items: center;
   margin-top: 20px;
+
+  @media (max-width: 425px) {
+    flex-direction: column;
+    margin-top: 10px;
+  }
 `;
 
 export const PaginationButton = styled.button`

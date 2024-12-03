@@ -82,15 +82,18 @@ const TableComponent = () => {
     fetchContacts();
   }, []);
 
-  useEffect(() => {
+  const handleSearchChange = (e) => {
+    const value = e.target.value;
+    setSearchTerm(value);
+
     const filtered = contacts.filter((contact) =>
-      contact.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      contact.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      contact.message.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      contact.topic.toLowerCase().includes(searchTerm.toLowerCase())
+      contact.name.toLowerCase().includes(value.toLowerCase()) ||
+      contact.email.toLowerCase().includes(value.toLowerCase()) ||
+      contact.message.toLowerCase().includes(value.toLowerCase()) ||
+      contact.topic.toLowerCase().includes(value.toLowerCase())
     );
     setFilteredContacts(filtered);
-  }, [searchTerm, contacts]);
+  };
 
   const handleEdit = (contactId) => {
     router.push(`/edit/${contactId}`);
@@ -162,7 +165,7 @@ const TableComponent = () => {
             type="text"
             placeholder="Buscar..."
             value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
+            onChange={handleSearchChange}
           />
           <SearchIcon>
             <FontAwesomeIcon icon={faSearch} />
