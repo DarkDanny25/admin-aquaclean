@@ -59,7 +59,7 @@ export const InputField = styled.input`
 
   @media (max-width: 425px) {
     padding: 12px 30px;
-    padding-left: 45px;
+    padding-left: 40px;
     font-size: 0.9rem;
   }
 `;
