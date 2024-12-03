@@ -94,7 +94,7 @@ export const Table = styled.table`
   }
 
   @media (max-width: 425px) {
-    width: 100%;
+    width: 50%;
   }
 `;
 
